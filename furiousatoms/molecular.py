@@ -3,6 +3,7 @@ from fury import utils, actor
 
 from furiousatoms.structure import bbox
 from fury import actor, molecular as mol
+from furiousatoms.element_lookup import COLOR_LOOKUP
 
 table = mol.PTable()
 
@@ -29,8 +30,9 @@ class ViewerMemoryManager:
         #Set colors
         self.colors = np.ones((self.no_atoms, 4))
         self.unique_types = np.unique(self.atom_types)
-        self.colors_unique_types = np.random.rand(len(self.unique_types), 4)
-        self.colors_unique_types[:, 3] = 1 #set opacity to 1 
+        self.colors_unique_types = np.ones((len(self.unique_types), 4))
+        for i, typ in enumerate(self.unique_types):
+            self.colors_unique_types[i] = COLOR_LOOKUP.get_element_color(typ)
         for i, typ in enumerate(self.atom_types):
             indexOfColor = np.where(self.unique_types == typ)
             self.colors[i] = self.colors_unique_types[indexOfColor]
