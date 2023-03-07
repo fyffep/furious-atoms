@@ -1177,10 +1177,10 @@ class FuriousAtomsApp(QtWidgets.QMainWindow):
             type_index = utils.np_lookup(SM.atom_type, typ)
             set_value_radius = SM.radii_spheres[type_index]
             self.ui.SpinBox_atom_radius.setValue((set_value_radius))
-            r = (SM.colors[type_index][0])*255
-            g = (SM.colors[type_index][1])*255
-            b = (SM.colors[type_index][2])*255
-            a = (SM.colors[type_index][3])*255
+            r = (SM.colors[type_index][0])
+            g = (SM.colors[type_index][1])
+            b = (SM.colors[type_index][2])
+            a = (SM.colors[type_index][3])
             cg = QtWidgets.QTreeWidgetItem(self.ui.treeWidget, [0, str(typ)])
             cg.setBackground(0,(QtGui.QBrush(QtGui.QColor(r, g, b, a))))
 

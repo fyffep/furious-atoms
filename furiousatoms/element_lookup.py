@@ -283,8 +283,3 @@ class ColorLookup():
 
 COLOR_LOOKUP = ColorLookup()
 OPACITY = 1
-
-
-if __name__ == "__main__":
-    print(COLOR_LOOKUP.get_element_color('Cm')) #[120,92,227]
-    print(COLOR_LOOKUP.get_element_color('Cn')) 
