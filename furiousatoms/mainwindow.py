@@ -30,6 +30,7 @@ from furiousatoms.builders.box_builder import  Ui_box
 from furiousatoms.builders.solution_builder import  Ui_solution
 from furiousatoms.builders.MWNT_builder import  Ui_MWNT
 from furiousatoms.builders.Nanorope_builder import  Ui_NanoRope
+from furiousatoms.builders.remote_file_builder import Ui_remote_file
 from furiousatoms.structure import bbox
 from furiousatoms.builders.electrolyte_builder import Ui_electrolyte
 from furiousatoms.general_util import simple_lookup
@@ -67,6 +68,7 @@ class FuriousAtomsApp(QtWidgets.QMainWindow):
         # File menu actions
         self.ui.actionNew_file.triggered.connect(self.new_window)
         self.ui.actionLoad_file.triggered.connect(self.open_from_widget)
+        self.ui.actionLoad_Remote_file.triggered.connect(self.fetch_from_widget)
         self.ui.actionSave_file.triggered.connect(self.save)
         self.ui.actionSave_Image_File.triggered.connect(self.save_image)
         self.ui.actionExit.triggered.connect(self.quit_fired)
@@ -913,6 +915,12 @@ class FuriousAtomsApp(QtWidgets.QMainWindow):
             child.show()
         else:
             child.close()
+
+    def fetch_from_widget(self):
+        Ui_remote_file.instance = Ui_remote_file()
+        Ui_remote_file.instance.win = self
+        Ui_remote_file.instance.show()
+        Ui_remote_file.instance.showNormal()
 
     def save_image(self):
         active_window = self.active_mdi_child()

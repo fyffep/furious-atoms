@@ -1424,6 +1424,7 @@
     </property>
     <addaction name="actionNew_file"/>
     <addaction name="actionLoad_file"/>
+    <addaction name="actionLoad_Remote_file"/>
     <addaction name="actionSave_file"/>
     <addaction name="actionSave_Image_File"/>
     <addaction name="actionExit"/>
@@ -1507,6 +1508,18 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+O</string>
+   </property>
+  </action>
+  <action name="actionLoad_Remote_file">
+   <property name="icon">
+    <iconset resource="icons.qrc">
+     <normaloff>:/icons/load.png</normaloff>:/icons/load.png</iconset>
+   </property>
+   <property name="text">
+    <string>Load Remote File</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+O</string>
    </property>
   </action>
   <action name="actionSave_file">
