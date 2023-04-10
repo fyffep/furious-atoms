@@ -53,6 +53,7 @@ class FuriousAtomsApp(QtWidgets.QMainWindow):
         self.init_interface()
         self.create_language_menu()
         self.create_connections()
+        self.setAcceptDrops(True)
 
     def init_settings(self):
         pass
@@ -968,6 +969,20 @@ class FuriousAtomsApp(QtWidgets.QMainWindow):
             return
         save_file(new_path, old_path, SM.universe_save, SM.deleted_particles, SM.deleted_bonds)
     
+    #Credit to https://stackoverflow.com/a/8580720/16519580 user ekhumoro
+    #for drag & drop file loading
+    def dragEnterEvent(self, event):
+        if event.mimeData().hasUrls():
+            event.accept()
+        else:
+            event.ignore()
+
+    def dropEvent(self, event):
+        for pyside_url in event.mimeData().urls():
+            actual_url = pyside_url.toLocalFile()
+            self.open(actual_url)
+    #End code from ekhumoro
+
     def eventFilter(self, obj, event):
         if event.type() == QtCore.QEvent.Close and self.window is obj:
             self.window.removeEventFilter(self)
